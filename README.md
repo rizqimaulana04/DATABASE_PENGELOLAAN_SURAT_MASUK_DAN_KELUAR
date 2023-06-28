@@ -198,7 +198,101 @@ FOREIGN KEY (no_surat_k) REFERENCES SuratKeluar(no_surat_k)
 ![img](gambar/table_laporan.png)<br>
 
 ## **CRUD (CREATE - READ - UPDATE - DELETE)**
+- CRUD adalah singkatan dari Create, Read, Update, dan Delete. Ini adalah empat operasi dasar yang digunakan dalam pengelolaan data dalam basis data atau sistem informasi.
+  1. Create (Buat): Operasi Create digunakan untuk membuat atau menambahkan data baru ke dalam basis data. Ini melibatkan pembuatan catatan baru dengan nilai-nilai yang ditentukan untuk setiap kolom yang relevan dalam tabel yang sesuai.<br>
+  Contoh:
+  ```sql
+  INSERT INTO TableName (column1, column2, ...)
+  VALUES (value1, value2, ...);
+  ```
 
+  - Isian tabel pemimpin
+  ```sql
+  INSERT INTO pemimpin VALUES
+  (5987,201,'Budi','Direktur'),
+  (1507,202,'Ani','Manager'),
+  (1928,203,'Rudi','Supervisor');
+  ```
+  ![img](gambar/insert_pemimpin.png)<br>
+  
+  - Isian tabel operator
+  ```sql  
+  INSERT INTO operator VALUES
+  (001,5987,'Dina'),
+  (002,1507,'Eko'),
+  (003,1928,'Fani');
+  ```
+  ![img](gambar/insert_operator.png)<br>
+  
+  - Isian tabel departemen
+  ```sql
+  INSERT INTO departemen VALUES
+  (201,'Keuangan','Jl. Merdeka No.1'),
+  (202,'Pemasaran','Jl. Sudirman No.2'),
+  (203,'Produksi','Jl. Industri No.3');
+  ```
+  ![img](gambar/insert_departemen.png)<br>
+
+  - Isian tabel disposisi
+  ```sql
+  INSERT INTO disposisi VALUES
+  (123,'Undangan','Hadir pada acara peresmian gedung baru'),
+  (234,'Pengumuman','Menyampaikan informasi terbaru tentang produk'),
+  (345,'Permintaan','Mengirimkan data penjualan bulan lalu');
+  ```
+  ![img](gambar/insert_disposisi.png)<br>
+
+  - Isian tabel SuratMasuk
+  ```sql
+  INSERT INTO SuratMasuk VALUES
+  (10751,001,123,'2023-06-25','Surat undangan dari PT Maju Jaya'),
+  (10234,002,234,'2023-06-26','Surat pengumuman dari PT Berkah Abadi'),
+  (10892,003,345,'2023-06-27','Surat permintaan dari PT Sejahtera Makmur');
+  ```
+  ![img](gambar/insert_suratmasuk.png)<br>
+  
+  - Isian tabel SuratKeluar
+  ```sql
+  INSERT INTO SuratKeluar VALUES
+  (15701,001,123,'2023-06-28','Surat konfirmasi kehadiran ke PT Maju Jaya'),
+  (43201,002,234,'2023-06-29','Surat balasan pengumuman ke PT Berkah Abadi'),
+  (29801,003,345,'2023-06-30','Surat pengiriman data penjualan ke PT Sejahtera Makmur');
+  ```
+  ![img](gambar/insert_suratkeluar.png)<br>
+
+  - Isian tabel LaporanTransaksi
+  ```sql
+  INSERT INTO LaporanTransaksi VALUES
+  (5479,10751,15701,'2023-06-28','Laporan transaksi antara PT Maju Jaya dan PT Keuangan'),
+  (8156,10234,43201,'2023-06-29','Laporan transaksi antara PT Berkah Abadi dan PT Pemasaran'),
+  (9239,10892,29801,'2023-06-30','Laporan transaksi antara PT Sejahtera Makmur dan PT Produksi');
+  ```
+  ![img](gambar/insert_laporantransaksi.png)<br>
+  
+  2. Read (Baca): Operasi Read digunakan untuk membaca atau mengambil data yang ada dari basis data. Ini melibatkan pemilihan dan pengambilan data yang relevan dari tabel berdasarkan kriteria tertentu.<br>
+  Contoh:
+  ```sql
+  SELECT column1, column2, ...
+  FROM TableName
+  WHERE condition;
+  ```
+  3. Update (Perbarui): Operasi Update digunakan untuk memperbarui data yang sudah ada dalam basis data. Ini melibatkan perubahan nilai-nilai dalam satu atau lebih kolom dalam tabel yang sesuai.<br>
+  Contoh:
+  ```sql
+  UPDATE TableName
+  SET column1 = value1, column2 = value2, ...
+  WHERE condition;
+  ```
+ ![img](gambar/update_laporan.png)<br>
+
+
+  4. Delete (Hapus): Operasi Delete digunakan untuk menghapus data yang ada dari basis data. Ini melibatkan penghapusan catatan atau baris tertentu dari tabel berdasarkan kriteria tertentu.<br>
+  Contoh:
+  ```sql
+  DELETE FROM TableName
+  WHERE condition;
+  ```
+ 
 ## **JOIN**
 - JOIN dalam SQL digunakan untuk menggabungkan baris-baris dari dua atau lebih tabel berdasarkan kriteria yang ditentukan. Hal ini memungkinkan pengguna untuk mengakses dan memanipulasi data yang terkait antara tabel-tabel tersebut.
 
