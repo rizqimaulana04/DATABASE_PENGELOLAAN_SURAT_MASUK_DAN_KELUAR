@@ -2,8 +2,8 @@
 
 ![img](gambar/ER-D.png)<br>
 
-
-ER-D (Entity-Relationship Diagram) adalah sebuah model yang digunakan untuk memvisualisasikan hubungan antara entitas dalam sebuah sistem atau basis data. Berikut adalah penjelasan ER-D yang berisi entitas dan atribut-atribut yang disebutkan:
+## **ER-D** 
+  - ER-D (Entity-Relationship Diagram) adalah sebuah model yang digunakan untuk memvisualisasikan hubungan antara entitas dalam sebuah sistem atau basis data. Berikut adalah penjelasan ER-D yang berisi entitas dan atribut-atribut yang disebutkan:
 
 Entitas "Pemimpin":
 -	id_pemimpin (atribut): ID unik untuk setiap pemimpin.
@@ -80,9 +80,9 @@ nama VARCHAR(255),
 jabatan VARCHAR(255),
 FOREIGN KEY (id_departemen) REFERENCES Departemen(id_departemen)
 );
-# **DDL(Data Definition Lenguge)**
+## **DDL(Data Definition Lenguge)**
 
-DDL (Data Definition Language) adalah kumpulan perintah atau kata sandi dalam bahasa pemrograman yang digunakan untuk mendefinisikan struktur atau skema basis data. DDL digunakan untuk membuat, mengubah, atau menghapus objek-objek dalam basis data, seperti tabel, kolom, indeks, dan kendala.
+  - DDL (Data Definition Language) adalah kumpulan perintah atau kata sandi dalam bahasa pemrograman yang digunakan untuk mendefinisikan struktur atau skema basis data. DDL digunakan untuk membuat, mengubah, atau menghapus objek-objek dalam basis data, seperti tabel, kolom, indeks, dan kendala.
 
 1. Tabel "Pemimpin":
 - id_pemimpin: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap pemimpin.
@@ -197,3 +197,53 @@ FOREIGN KEY (no_surat_k) REFERENCES SuratKeluar(no_surat_k)
 ```
 ![img](gambar/table_laporan.png)<br>
 
+## **CRUD (CREATE - READ - UPDATE - DELETE)**
+
+## **JOIN**
+- JOIN dalam SQL digunakan untuk menggabungkan baris-baris dari dua atau lebih tabel berdasarkan kriteria yang ditentukan. Hal ini memungkinkan pengguna untuk mengakses dan memanipulasi data yang terkait antara tabel-tabel tersebut.
+
+  - GABUNG antara tabel "Pemimpin" dan "Departemen" berdasarkan kolom "id_departemen":
+  ```sql
+  SELECT p.id_pemimpin, p.nama, p.jabatan, d.nama AS nama_departemen
+  FROM pemimpin p
+  JOIN departemen d ON p.id_departemen = d.id_departemen;
+  ```
+  ![img](gambar/join1.png)<br>
+  
+  - JOIN antara tabel "Operator", "Pemimpin", dan "Departemen" berdasarkan kolom "id_pemimpin":
+  ```sql
+  SELECT o.id_operator, o.nama AS nama_operator, p.nama AS nama_pemimpin, d.nama AS nama_departemen
+  FROM operator o
+  JOIN pemimpin p ON o.id_pemimpin = p.id_pemimpin
+  JOIN departemen d ON p.id_departemen = d.id_departemen;
+  ```
+  ![img](gambar/join2.png)<br>
+  
+  - GABUNG antara tabel "SuratMasuk", "Operator", dan "Disposisi" berdasarkan kolom "id_operator" dan "id_disposisi":
+  ```sql
+  SELECT sm.no_surat_masuk, sm.tgl_terima, sm.catatan, o.nama AS nama_operator, d.tipe_surat, d.catatan AS catatan_disposisi
+  FROM SuratMasuk sm
+  JOIN operator o ON sm.id_operator = o.id_operator
+  JOIN disposisi d ON sm.id_disposisi = d.id_disposisi;
+  ```
+  ![img](gambar/join3.png)<br>
+  
+  - GABUNG antara tabel "SuratKeluar", "Operator", dan "Disposisi" berdasarkan kolom "id_operator" dan "id_disposisi":
+  ```sql
+  SELECT sk.no_surat_k, sk.tgl_kirim, sk.catatan, o.nama AS nama_operator, d.tipe_surat, d.catatan AS catatan_disposisi
+  FROM SuratKeluar sk
+  JOIN operator o ON sk.id_operator = o.id_operator
+  JOIN disposisi d ON sk.id_disposisi = d.id_disposisi;
+  ```
+  ![img](gambar/join4.png)<br>
+  
+  - GABUNG antara tabel "LaporanTransaksi", "SuratMasuk", dan "SuratKeluar" berdasarkan kolom "no_surat_m" dan "no_surat_k":
+  ```sql
+  SELECT lt.id_laporan, lt.tanggal, lt.isi, sm.no_surat_masuk, sk.no_surat_k
+  FROM LaporanTransaksi lt
+  JOIN SuratMasuk sm ON lt.no_surat_m = sm.no_surat_masuk
+  JOIN SuratKeluar sk ON lt.no_surat_k = sk.no_surat_k;
+  ```
+  ![img](gambar/join5.png)<br>
+
+  
