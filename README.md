@@ -1,5 +1,16 @@
 # DATABASE_PENGELOLAAN_SURAT_MASUK_DAN_KELUAR
 
+# Daftar Isi
+[ER-D](#er-d)<br>
+[DDL](#ddl)<br>
+[CRUD](#crud)<br>
+[JOIN](#join)<br>
+
+## **LINK Youtube Penjelasan**
+[link youtube](https://youtu.be/AEtFK88tzbg)
+
+
+
 ![img](gambar/ER-D.png)<br>
 
 ## **ER-D** 
@@ -276,6 +287,49 @@ FOREIGN KEY (no_surat_k) REFERENCES SuratKeluar(no_surat_k)
   FROM TableName
   WHERE condition;
   ```
+  
+  - Tampilan tabel Pemimpin
+  ```sql
+  SELECT * FROM pemimpin;
+  ```
+  ![img](gambar/select_pemimpin.png)<br>
+  
+  - Tampilan tabel Operator
+  ```sql
+  SELECT * FROM operator;
+  ```
+  ![img](gambar/select_operator.png)<br>
+
+  - Tampilan tabel Depertemen
+  ```sql
+  SELECT * FROM depertemen;
+  ```
+  ![img](gambar/select_departemen.png)<br>
+
+  - Tampilan tabel Disposisi
+  ```sql
+  SELECT * FROM disposisi;
+  ```
+  ![img](gambar/select_disposisi.png)<br>
+
+  - Tampilan tabel Surat Masuk
+  ```sql
+  SELECT * FROM SuratMasuk;
+  ```
+  ![img](gambar/select_suratmasuk.png)<br>
+
+  - Tampilan tabel Surat Keluar
+  ```sql
+  SELECT * FROM SuratKeluar;
+  ```
+  ![img](gambar/select_suratkeluar.png)<br>
+
+  - Tampilan tabel Laporan Transaksi
+  ```sql
+  SELECT * FROM LaporanTransaksi;
+  ```
+  ![img](gambar/select_laporan.png)<br>
+
   3. Update (Perbarui): Operasi Update digunakan untuk memperbarui data yang sudah ada dalam basis data. Ini melibatkan perubahan nilai-nilai dalam satu atau lebih kolom dalam tabel yang sesuai.<br>
   Contoh:
   ```sql
