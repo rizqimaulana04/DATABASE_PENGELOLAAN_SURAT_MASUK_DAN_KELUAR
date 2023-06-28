@@ -71,3 +71,121 @@ Laporan Transaksi (no_surat_m) memiliki hubungan "terkait dengan" Surat Masuk (n
 Laporan Transaksi (no_surat_k) memiliki hubungan "terkait dengan" Surat Keluar (no_surat_k).
 
 Dengan adanya hubungan-hubungan ini, kita dapat merepresentasikan bagaimana entitas-entitas dalam sistem yang saling terkait dan berinteraksi satu sama lain dalam ER-D
+
+-- Membuat tabel Pemimpin
+CREATE TABLE Pemimpin (
+id_pemimpin INT PRIMARY KEY,
+id_departemen INT,
+nama VARCHAR(255),
+jabatan VARCHAR(255),
+FOREIGN KEY (id_departemen) REFERENCES Departemen(id_departemen)
+);
+# **DDL(Data Definition Lenguge)**
+
+DDL (Data Definition Language) adalah kumpulan perintah atau kata sandi dalam bahasa pemrograman yang digunakan untuk mendefinisikan struktur atau skema basis data. DDL digunakan untuk membuat, mengubah, atau menghapus objek-objek dalam basis data, seperti tabel, kolom, indeks, dan kendala.
+
+1. Tabel "Pemimpin":
+- id_pemimpin: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap pemimpin.
+id_departemen: Kolom dengan tipe data INT yang menyimpan ID departemen yang dipimpin oleh pimpinan.
+nama: Kolom dengan tipe data VARCHAR(255) yang menyimpan nama pemimpin.
+postingan: Kolom dengan tipe data VARCHAR(255) yang menyimpan jabatan pemimpin.<br>
+```sql
+CREATE TABLE Pemimpin (
+id_pemimpin INT PRIMARY KEY,
+id_departemen INT,
+nama VARCHAR(255),
+jabatan VARCHAR(255),
+FOREIGN KEY (id_departemen) REFERENCES Departemen(id_departemen)
+);
+```
+
+2. Tabel "Operator":
+- id_operator: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap operator.
+id_pemimpin: Kolom dengan tipe data INT yang menyimpan ID pemimpin yang mengawasi operator.
+nama: Kolom dengan tipe data VARCHAR(255) yang menyimpan nama operator.
+```sql
+CREATE TABLE Operator (
+id_operator INT PRIMARY KEY,
+id_pemimpin INT,
+nama VARCHAR(255),
+FOREIGN KEY (id_pemimpin) REFERENCES Pemimpin(id_pemimpin)
+);
+```
+
+3. Tabel "Departemen":
+- id_departemen: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap departemen.
+nama: Kolom dengan tipe data VARCHAR(255) yang menyimpan nama departemen.
+alamat: Kolom dengan tipe data VARCHAR(255) yang menyimpan alamat departemen.
+```sql
+CREATE TABLE Departemen (
+id_departemen INT PRIMARY KEY,
+nama VARCHAR(255),
+alamat VARCHAR(255)
+);
+```
+
+4. Tabel "Surat Masuk":
+- no_surat_masuk: Kolom dengan tipe data INT sebagai primary key yang menyimpan nomor surat masuk.
+id_operator: Kolom dengan tipe data INT yang menyimpan ID operator yang menerima surat masuk.
+id_disposisi: Kolom dengan tipe data INT yang menyimpan ID disposisi yang diberikan pada surat masuk.
+tgl_terima: Kolom dengan tipe data DATE yang menyimpan tanggal surat diterima.
+catatan: Kolom dengan tipe data TEXT yang menyimpan catatan terkait surat masuk.
+```sql
+CREATE TABLE SuratMasuk (
+no_surat_masuk INT PRIMARY KEY,
+id_operator INT,
+id_disposisi INT,
+tgl_terima DATE,
+catatan TEXT,
+FOREIGN KEY (id_operator) REFERENCES Operator(id_operator),
+FOREIGN KEY (id_disposisi) REFERENCES Disposisi(id_disposisi)
+);
+```
+
+5. Tabel "Disposisi":
+- id_disposisi: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap disposisi.
+tipe_surat: Kolom dengan tipe data VARCHAR(255) yang menyimpan tipe surat yang terdisposisi.
+catatan: Kolom dengan tipe data TEXT yang menyimpan catatan terkait disposisi.
+```sql
+CREATE TABLE Disposisi (
+id_disposisi INT PRIMARY KEY,
+tipe_surat VARCHAR(255),
+catatan TEXT
+);
+```
+
+6. Tabel "Surat Keluar":
+- no_surat_k: Kolom dengan tipe data INT sebagai primary key yang menyimpan nomor surat keluar.
+id_operator: Kolom dengan tipe data INT yang menyimpan ID operator yang mengirim surat keluar.
+id_disposisi: Kolom dengan tipe data INT yang menyimpan ID disposisi yang diberikan pada surat keluar.
+tgl_kirim: Kolom dengan tipe data DATE yang menyimpan tanggal surat terkirim.
+catatan: Kolom dengan tipe data TEXT yang menyimpan catatan terkait surat keluar.
+```sql
+CREATE TABLE SuratKeluar (
+no_surat_k INT PRIMARY KEY,
+id_operator INT,
+id_disposisi INT,
+tgl_kirim DATE,
+catatan TEXT,
+FOREIGN KEY (id_operator) REFERENCES Operator(id_operator),
+FOREIGN KEY (id_disposisi) REFERENCES Disposisi(id_disposisi)
+);
+```
+
+7. Tabel "Laporan Transaksi":
+- id_laporan: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap laporan transaksi.
+no_surat_m: Kolom dengan tipe data INT yang menyimpan nomor surat masuk terkait laporan transaksi.
+no_surat_k: Kolom dengan tipe data INT yang menyimpan nomor surat keluar terkait laporan transaksi.
+tanggal: Kolom dengan tipe data DATE yang menyimpan tanggal laporan transaksi.
+isi: Kolom dengan tipe data TEXT yang menyimpan isi laporan transaksi.
+```sql
+CREATE TABLE LaporanTransaksi (
+id_laporan INT PRIMARY KEY,
+no_surat_m INT,
+no_surat_k INT,
+tanggal DATE,
+isi TEXT,
+FOREIGN KEY (no_surat_m) REFERENCES SuratMasuk(no_surat_masuk),
+FOREIGN KEY (no_surat_k) REFERENCES SuratKeluar(no_surat_k)
+);
+```
