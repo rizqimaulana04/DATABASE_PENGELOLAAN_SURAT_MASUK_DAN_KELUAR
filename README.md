@@ -2,8 +2,8 @@
 
 # Daftar Isi
 [ER-D](#er-d)<br>
-[DDL](#ddl)<br>
-[CRUD](#crud)<br>
+[DDL](#ddl(datadefinitionlenguge))<br>
+[CRUD](#crud(create-read-update-delete))<br>
 [JOIN](#join)<br>
 
 ## **LINK Youtube Penjelasan**
