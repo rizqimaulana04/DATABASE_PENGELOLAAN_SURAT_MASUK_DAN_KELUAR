@@ -98,6 +98,7 @@ jabatan VARCHAR(255),
 FOREIGN KEY (id_departemen) REFERENCES Departemen(id_departemen)
 );
 ```
+![img}(gambar/table_pemimpin)<br>
 
 2. Tabel "Operator":
 - id_operator: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap operator.
@@ -111,6 +112,7 @@ nama VARCHAR(255),
 FOREIGN KEY (id_pemimpin) REFERENCES Pemimpin(id_pemimpin)
 );
 ```
+![img](gambar/table_operator)<br>
 
 3. Tabel "Departemen":
 - id_departemen: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap departemen.
@@ -123,6 +125,7 @@ nama VARCHAR(255),
 alamat VARCHAR(255)
 );
 ```
+![img](gambar/table_departemen)<br>
 
 4. Tabel "Surat Masuk":
 - no_surat_masuk: Kolom dengan tipe data INT sebagai primary key yang menyimpan nomor surat masuk.
@@ -141,6 +144,7 @@ FOREIGN KEY (id_operator) REFERENCES Operator(id_operator),
 FOREIGN KEY (id_disposisi) REFERENCES Disposisi(id_disposisi)
 );
 ```
+![img](gambar/table_suratmasuk)<br>
 
 5. Tabel "Disposisi":
 - id_disposisi: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap disposisi.
@@ -153,6 +157,7 @@ tipe_surat VARCHAR(255),
 catatan TEXT
 );
 ```
+![img](gambar/table_disposisi)<br>
 
 6. Tabel "Surat Keluar":
 - no_surat_k: Kolom dengan tipe data INT sebagai primary key yang menyimpan nomor surat keluar.
@@ -171,6 +176,7 @@ FOREIGN KEY (id_operator) REFERENCES Operator(id_operator),
 FOREIGN KEY (id_disposisi) REFERENCES Disposisi(id_disposisi)
 );
 ```
+![img](gambar/table_suratkeluar)<br>
 
 7. Tabel "Laporan Transaksi":
 - id_laporan: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap laporan transaksi.
@@ -189,3 +195,5 @@ FOREIGN KEY (no_surat_m) REFERENCES SuratMasuk(no_surat_masuk),
 FOREIGN KEY (no_surat_k) REFERENCES SuratKeluar(no_surat_k)
 );
 ```
+![img](gambar/table_laporan)<br>
+
