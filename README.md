@@ -98,7 +98,7 @@ jabatan VARCHAR(255),
 FOREIGN KEY (id_departemen) REFERENCES Departemen(id_departemen)
 );
 ```
-![img}(gambar/table_pemimpin.png)<br>
+![img](gambar/table_pemimpin.png)<br>
 
 2. Tabel "Operator":
 - id_operator: Kolom dengan tipe data INT sebagai primary key yang menyimpan ID unik untuk setiap operator.
