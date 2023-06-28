@@ -267,7 +267,7 @@ FOREIGN KEY (no_surat_k) REFERENCES SuratKeluar(no_surat_k)
   (8156,10234,43201,'2023-06-29','Laporan transaksi antara PT Berkah Abadi dan PT Pemasaran'),
   (9239,10892,29801,'2023-06-30','Laporan transaksi antara PT Sejahtera Makmur dan PT Produksi');
   ```
-  ![img](gambar/insert_laporantransaksi.png)<br>
+  ![img](gambar/insert_laporan.png)<br>
   
   2. Read (Baca): Operasi Read digunakan untuk membaca atau mengambil data yang ada dari basis data. Ini melibatkan pemilihan dan pengambilan data yang relevan dari tabel berdasarkan kriteria tertentu.<br>
   Contoh:
